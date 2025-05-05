@@ -1,12 +1,16 @@
+
 from flask import Flask, request, jsonify
+from flask_cors import CORS  # Add this import
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 import joblib
-import os  # Add this import
+import os
 
 # Initialize Flask app
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
 
 # Load pre-trained model and scaler
 rf = joblib.load("random_forest_model.pkl")  # Replace with your model file path
